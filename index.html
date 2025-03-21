@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Najibabad Ride Booking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Najibabad Ride Booking</h2>
+        <form id="bookingForm">
+            <label>Pickup Location:</label>
+            <input type="text" id="pickup" placeholder="Enter Pickup Location" required>
+
+            <label>Drop Location:</label>
+            <input type="text" id="drop" placeholder="Enter Drop Location" required>
+
+            <label>Select Ride Type:</label>
+            <select id="rideType">
+                <option>Shared Ride</option>
+                <option>Private Ride</option>
+            </select>
+
+            <label>Phone Number:</label>
+            <input type="tel" id="phone" placeholder="Enter Your Phone Number" required>
+
+            <button type="button" onclick="submitBooking()">Book Ride</button>
+        </form>
+        <p id="confirmationMessage" style="color: green; font-weight: bold;"></p>
+    </div>
+
+    <script>
+        function submitBooking() {
+            const pickup = document.getElementById('pickup').value;
+            const drop = document.getElementById('drop').value;
+            const rideType = document.getElementById('rideType').value;
+            const phone = document.getElementById('phone').value;
+
+            if (pickup && drop && phone) {
+                document.getElementById('confirmationMessage').innerText = `Your ${rideType} from ${pickup} to ${drop} is booked! Driver will contact you shortly on ${phone}.`;
+                document.getElementById('bookingForm').reset();
+            } else {
+                alert('Please fill all the details');
+            }
+        }
+    </script>
+</body>
+</html>
